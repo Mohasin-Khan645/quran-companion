@@ -1,0 +1,41 @@
+{
+  "mercy": {
+    "title": "Ayahs about Mercy",
+    "description": "Verses highlighting Allah's mercy and compassion",
+    "ayahs": [
+      {"surah": 7, "ayah": 156},
+      {"surah": 39, "ayah": 53}, 
+      {"surah": 21, "ayah": 107},
+      {"surah": 94, "ayah": 5},
+      {"surah": 2, "ayah": 173}
+    ]
+  },
+  "hardship": {
+    "title": "Ayahs for Hardship", 
+    "description": "Comfort during trials and difficulties",
+    "ayahs": [
+      {"surah": 94, "ayah": 5},
+      {"surah": 2, "ayah": 286},
+      {"surah": 65, "ayah": 7},
+      {"surah": 3, "ayah": 139}
+    ]
+  },
+  "morning": {
+    "title": "Morning Adhkar",
+    "description": "Recommended morning remembrances",
+    "ayahs": [
+      {"surah": 112, "ayah": 1},
+      {"surah": 113, "ayah": 1},
+      {"surah": 114, "ayah": 1}
+    ]
+  },
+  "evening": {
+    "title": "Evening Adhkar",
+    "description": "Recommended evening remembrances", 
+    "ayahs": [
+      {"surah": 112, "ayah": 1},
+      {"surah": 113, "ayah": 1},
+      {"surah": 114, "ayah": 1}
+    ]
+  }
+}
