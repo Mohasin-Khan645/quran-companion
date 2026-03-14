@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qur'an – Surah</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&family=Lateef:wght@400;600&display=swap"
+  />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app-root">
+    <header class="top-bar">
+      <div class="top-bar__left">
+        <button class="icon-btn" id="backToListBtn" aria-label="Back">
+          ←
+        </button>
+        <div class="top-bar__titles">
+          <span class="top-bar__app-title">Qur'an</span>
+          <span class="top-bar__app-subtitle" id="surahMetaShort">Surah</span>
+        </div>
+      </div>
+      <div class="top-bar__right">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="icon-moon"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="content content--reader">
+      <section class="reader-page">
+        <header class="reader-header" id="readerHeader">
+          <div class="reader-header__meta">
+            <span class="reader-header__badge" id="surahRevelationType"></span>
+            <span class="reader-header__ayah-count" id="surahAyahCount"></span>
+          </div>
+          <div class="reader-header__progress">
+            <span id="readerProgressText">Ayah 1 of N</span>
+            <span id="readerJuzInfo">Page – • Juz – • Hizb –</span>
+          </div>
+          <h1 class="reader-header__title-ar" id="surahNameAr">–</h1>
+          <h2 class="reader-header__title-en" id="surahNameEn">–</h2>
+          <p class="reader-header__subtitle">
+            Surah <span id="surahNumber"></span> • Classic Mushaf order
+          </p>
+          <div class="reader-header__controls">
+            <label class="reader-select">
+              <span>Reciter</span>
+              <select id="reciterSelect">
+                <option value="alafasy">Mishari Al-Afasy</option>
+                <option value="sudais">Abdur-Rahman As-Sudais</option>
+                <option value="minshawi">Mahmoud Al-Minshawi</option>
+                <option value="husary">Mahmoud Khalil Al-Husary</option>
+                <option value="shatri">Abu Bakr Al-Shatri</option>
+              </select>
+            </label>
+            <label class="reader-select">
+              <span>Translation</span>
+              <select id="translationSelect">
+                <option value="none">Arabic only</option>
+                <option value="en">English (Sahih)</option>
+                <option value="ur">Urdu (Junagarhi)</option>
+              </select>
+            </label>
+            <label class="reader-select">
+              <span>Repeat</span>
+              <select id="repeatModeSelect">
+                <option value="none">Off</option>
+                <option value="ayah">Ayah</option>
+                <option value="surah">Surah</option>
+              </select>
+            </label>
+          </div>
+          <div class="reader-header__controls">
+            <label class="reader-select">
+              <span>Juz</span>
+              <select id="juzSelect">
+                <!-- options 1-30 injected by JS if desired -->
+              </select>
+            </label>
+            <label class="reader-select">
+              <span>Page</span>
+              <select id="pageSelect">
+                <!-- options 1-604 injected by JS -->
+              </select>
+            </label>
+            <div class="reader-select reader-page-nav">
+              <span>Navigate</span>
+              <button type="button" id="prevPageBtn">Previous</button>
+              <button type="button" id="nextPageBtn">Next</button>
+            </div>
+            <div class="reader-select">
+              <span>Mode</span>
+              <button type="button" class="reader-mode-btn" data-mode="mushaf">Mushaf</button>
+              <button type="button" class="reader-mode-btn" data-mode="study">Study</button>
+            </div>
+            <label class="reader-select">
+              <span>Script</span>
+              <select id="scriptSelect">
+                <option value="uthmani">Uthmani</option>
+                <option value="uthmani-hafs">Uthmani Hafs</option>
+                <option value="uthmani-simple">Uthmani Simple</option>
+                <option value="indopak">IndoPak</option>
+                <option value="indopak-nastaleeq">IndoPak Nastaleeq</option>
+                <option value="tajweed">Tajweed Colored</option>
+              </select>
+            </label>
+            <label class="reader-select">
+              <span>Tajweed</span>
+              <button type="button" id="tajweedToggle" aria-pressed="false">
+                Off
+              </button>
+            </label>
+            <label class="reader-select">
+              <span>Word-by-word</span>
+              <button type="button" id="wbwToggle" aria-pressed="false">
+                Off
+              </button>
+            </label>
+            <div class="reader-select">
+              <span>Font</span>
+              <button type="button" id="fontSmallerBtn">A-</button>
+              <button type="button" id="fontLargerBtn">A+</button>
+            </div>
+          </div>
+          <div class="reader-header__audio-row">
+            <audio id="surahAudio" class="reader-audio" controls preload="metadata"></audio>
+            <button class="pill-btn reader-header__play-all" id="playAllAyahsBtn">
+              ▶ Play Surah
+            </button>
+            <button class="pill-btn reader-header__play-all" id="playFullSurahBtn">
+              ▶ Full Surah
+            </button>
+          </div>
+        </header>
+
+        <section class="reader-search" id="readerSearchSection">
+          <div class="reader-search__bar">
+            <input
+              id="readerSearchInput"
+              type="search"
+              placeholder="Search Quran (words, translations, surah names)..."
+              aria-label="Search Quran"
+            />
+            <button id="readerSearchBtn" type="button">Search</button>
+          </div>
+          <div id="readerSearchResults" class="reader-search__results hidden"></div>
+        </section>
+
+        <section class="ayah-list" id="ayahList">
+          <div id="mushafContainer" class="mushaf-page" aria-label="Mushaf page view"></div>
+          <div id="studyListContainer"></div>
+        </section>
+
+        <aside class="tafsir-panel" id="tafsirPanel" aria-hidden="true">
+          <div class="tafsir-panel__backdrop" id="tafsirBackdrop"></div>
+          <div class="tafsir-panel__dialog">
+            <header class="tafsir-panel__header">
+              <h3 class="tafsir-panel__title" id="tafsirTitle">Tafsir</h3>
+              <button
+                type="button"
+                class="tafsir-panel__close"
+                id="tafsirClose"
+                aria-label="Close Tafsir"
+              >
+                ✕
+              </button>
+            </header>
+            <div class="tafsir-panel__controls">
+              <label>
+                <span>Source</span>
+                <select id="tafsirSourceSelect">
+                  <option value="ibn-kathir">Ibn Kathir</option>
+                  <option value="saadi">As-Sa'di</option>
+                  <option value="jalalayn">Al-Jalalayn</option>
+                  <option value="tabari">At-Tabari</option>
+                </select>
+              </label>
+            </div>
+            <div class="tafsir-panel__body" id="tafsirBody">
+              Select an ayah and choose Tafsir to view commentary here.
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/surahReader.js"></script>
+</body>
+</html>

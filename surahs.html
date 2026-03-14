@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qur'an App – All Surahs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="surahs-page">
+  <div class="app-shell">
+    <header class="nav">
+      <div class="nav__left">
+        <button class="nav__link nav__link--ghost" id="backHomeBtn" aria-label="Back to home">? Home</button>
+        <div class="nav__logo">
+          <span class="nav__logo-icon">??</span>
+          <div class="nav__logo-text">
+            <span class="nav__logo-title">Quran App</span>
+            <span class="nav__logo-subtitle">All Surahs</span>
+          </div>
+        </div>
+      </div>
+      <div class="nav__right">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="icon-moon"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="section section--card" id="searchSection">
+        <div class="section__header">
+          <h1 class="section__title">Browse 114 Surahs</h1>
+        </div>
+        <div class="search-strip">
+          <div class="search-input-wrapper">
+            <span class="search-icon"></span>
+            <input
+              id="surahSearchInput"
+              type="search"
+              placeholder="Search surah by name or number…"
+              autocomplete="off"
+            />
+            <button class="search-clear" id="searchClearBtn" aria-label="Clear search" hidden>?</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--card" id="searchResultsSection">
+        <div class="section__header section__header--tight">
+          <h2 class="section__title">All Surahs</h2>
+        </div>
+        <div class="surah-list surah-list--results" id="surahListContainer" aria-label="Surah search results">
+          <!-- Rendered by JS -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/surahList.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qur'an App – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="nav">
+      <div class="nav__left">
+        <div class="nav__logo">
+          <span class="nav__logo-icon">&#128214;</span>
+          <div class="nav__logo-text">
+            <span class="nav__logo-title">Quran App</span>
+            <span class="nav__logo-subtitle">Read • Listen • Learn</span>
+          </div>
+        </div>
+        <nav class="nav__links">
+          <button class="nav__link nav__link--active">Home</button>
+          <button class="nav__link" id="navScrollSearch">Search</button>
+          <button class="nav__link" id="navScrollBookmarks">Bookmarks</button>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="icon-moon"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero hero--grid hero--pattern">
+        <div class="hero__content">
+          <div class="hero__badge">Read, Listen &amp; Reflect</div>
+          <div class="hero__bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+          <p class="hero__subtitle">
+            Explore the Qur'an with fluent recitations, translations, and a calm reading space that works beautifully on any device.
+          </p>
+          <div class="hero__actions">
+            <a class="hero__cta" href="surah.html?page=1" id="heroOpenMushafBtn">Open Mushaf</a>
+            <button class="hero__cta hero__cta--ghost" id="heroStartReadingBtn">Start Reading</button>
+            <button class="hero__cta hero__cta--ghost" id="browseAllSurahsBtn">Browse 114 Surahs</button>
+          </div>
+        </div>
+        <div class="hero__card glass">
+          <div class="hero__stat">
+            <span class="hero__stat-number">114</span>
+            <span class="hero__stat-label">Surahs</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">6,236</span>
+            <span class="hero__stat-label">Ayahs</span>
+          </div>
+          <div class="hero__stat hero__stat--accent">
+            <span class="hero__stat-number">Daily</span>
+            <span class="hero__stat-label">Bookmarks &amp; Last-read sync</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-grid">
+        <a class="feature-card feature-card--link" id="featureAllSurahsCard" href="surahs.html" aria-label="Open all 114 surahs">
+          <div class="feature-card__icon">&#128214;</div>
+          <h3 class="feature-card__title">Surahs</h3>
+          <p class="feature-card__body">Browse all 114 Surahs with quick jump.</p>
+        </a>
+        <article class="feature-card" id="featureBookmarksCard">
+          <div class="feature-card__icon">&#11088;</div>
+          <h3 class="feature-card__title">Bookmarks</h3>
+          <p class="feature-card__body">Access your saved ayahs instantly.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">&#128257;</div>
+          <h3 class="feature-card__title">Tasbih Counter</h3>
+          <p class="feature-card__body">Track daily dhikr with pulse feedback.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon">&#128214;</div>
+          <h3 class="feature-card__title">Daily Ayah</h3>
+          <p class="feature-card__body">Reflect on a fresh verse every day.</p>
+        </article>
+      </section>
+
+      <section class="section section--lifted">
+        <div class="section__header">
+          <h2 class="section__title">Popular Surahs</h2>
+        </div>
+        <div class="popular-grid" id="popularSurahsRow"></div>
+      </section>
+
+      <section class="section">
+        <div class="dashboard-grid dashboard-grid--two">
+          <article class="widget-card" id="lastReadPanel" hidden>
+            <div class="widget-card__header">
+              <h3 class="widget-card__title">Last Read</h3>
+              <span class="widget-card__meta">Continue</span>
+            </div>
+            <div class="widget-card__body">
+              <div class="last-read__surah">
+                <span id="lastReadSurahNameEn">–</span>
+                <span class="last-read__surah-ar" id="lastReadSurahNameAr"></span>
+              </div>
+            </div>
+            <div class="widget-card__footer">
+              <button class="pill-btn" id="lastReadJumpBtn">Open</button>
+            </div>
+          </article>
+
+          <article class="widget-card">
+            <div class="widget-card__header">
+              <h3 class="widget-card__title">Tasbih Counter</h3>
+              <span class="widget-card__meta">Tap to count</span>
+            </div>
+            <div class="widget-card__body widget-card__body--center">
+              <button class="tasbih-card__circle" id="tasbihCircle">0</button>
+              <div class="tasbih-card__footer">
+                <span class="tasbih-card__rounds" id="tasbihRounds">0 / 100</span>
+                <button class="tasbih-card__reset" id="tasbihResetBtn">Reset</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="widget-card" id="ayahOfDayCard">
+            <div class="widget-card__header">
+              <h3 class="widget-card__title">Ayah of the Day</h3>
+              <span class="widget-card__meta" id="ayahOfDayMeta"></span>
+            </div>
+            <div class="widget-card__body">
+              <p class="ayah-card__text-ar" id="ayahOfDayAr"></p>
+              <p class="ayah-card__text-en" id="ayahOfDayEn">A beautiful verse from the Qur'an will appear here.</p>
+              <div class="ayah-actions">
+                <button class="pill-btn pill-btn--ghost" id="ayahOfDayBookmarkBtn">Bookmark</button>
+                <button class="pill-btn" id="ayahOfDayShareBtn">Share</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="widget-card" id="bookmarksSection">
+            <div class="widget-card__header">
+              <h3 class="widget-card__title">Bookmarked Ayahs</h3>
+              <span class="widget-card__meta">Quick access</span>
+            </div>
+            <div class="widget-card__body widget-card__body--scroll" id="bookmarkedAyahsList"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--card quick-actions">
+        <div class="section__header">
+          <h2 class="section__title">Quick Actions</h2>
+        </div>
+        <div class="quick-actions__grid">
+          <button class="quick-action" id="qaContinue">Continue Reading</button>
+          <button class="quick-action" id="qaSearch">Search Surah</button>
+          <button class="quick-action" id="qaBookmarks">Bookmarks</button>
+          <button class="quick-action" id="qaTasbih">Tasbih Counter</button>
+          <button class="quick-action" id="qaAudio">Listen to Quran</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="searchModal" aria-hidden="true">
+    <div class="modal__backdrop" id="searchModalBackdrop"></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Search surah">
+      <button class="modal__close" id="searchModalClose" aria-label="Close search">×</button>
+      <div class="search-strip search-strip--modal">
+        <div class="search-input-wrapper">
+          <span class="search-icon"></span>
+          <input id="modalSurahSearchInput" type="search" placeholder="Search surah by name or number…" autocomplete="off" />
+          <button class="search-clear" id="modalSearchClearBtn" aria-label="Clear search" hidden>✕</button>
+        </div>
+        <button class="modal__search-btn" id="modalSearchBtn">Search</button>
+      </div>
+      <div class="surah-list surah-list--results" id="modalSurahListContainer" aria-label="Surah search results"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__links">
+      <a href="#" aria-label="About">About</a>
+      <a href="https://api.alquran.cloud" target="_blank" rel="noopener" aria-label="API source">API source</a>
+      <a href="#" aria-label="Privacy">Privacy</a>
+      <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+    </div>
+    <div class="footer__copy">Quran App • Built for calm reading</div>
+  </footer>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/surahList.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+</html>
